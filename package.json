@@ -9,7 +9,7 @@
     "backend": "nodemon backend/server",
     "frontend": "cd brad && npm start",
     "start": "concurrently \"npm run backend\" \"npm run frontend\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix brad && npm run build --prefix brad"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm install --prefix brad && npm run build --prefix brad"
   },
   "repository": {
     "type": "git",
