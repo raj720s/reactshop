@@ -18,6 +18,7 @@ export const createOrderAction = (order) => async (dispatch, getState) => {
         "Content-Type": "application/json",
       },
     };
+    // console.log(userInfo);
     const res = await axios.post(`/api/orders`, order, config);
     // config makes sure that the token is avaliable in  a manual way ..
     dispatch({
@@ -32,8 +33,8 @@ export const createOrderAction = (order) => async (dispatch, getState) => {
     localStorage.removeItem("cartItems");
   } catch (err) {
     const message =
-      err.response && err.response.data.message
-        ? err.response.data.message
+      err.response && err.response.data.msg
+        ? err.response.data.msg
         : err.message;
 
     if (message === "unauthorized token") {

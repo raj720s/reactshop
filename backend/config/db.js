@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
 const connectDb = async () => {
-  mongoose.connect(process.env.dbString, {
+  mongoose.connect(process.env.DB_URI, {
     useCreateIndex: true,
     useUnifiedTopology: true,
     useNewUrlParser: true,

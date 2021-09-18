@@ -33,13 +33,13 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/upload", uploadRoute);
 
 app.get("/api/config/paypal", (req, res) => {
-  res.send(process.env.paypalClientId);
+  res.send(process.env.PAYPAL_ID);
 });
 
-if (process.env.node_env === "production") {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/brad/build")));
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "brad", "build", "index.html"));
+    res.sendFile(path.resolve(__dirname, "brad", "public", "index.html"));
   }); // * is any thing exceopt these declared routes
 } else {
   app.get("/", (req, res) => {
@@ -52,6 +52,6 @@ app.use(errorMidware);
 app.use(cors());
 
 // port
-app.listen(process.env.port || 5000, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log("running on 5000 port");
 });

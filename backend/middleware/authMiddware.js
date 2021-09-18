@@ -1,6 +1,8 @@
 import expressAsyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
 import UserModel from "../models/userModel.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 export const checkAuthMiddware = expressAsyncHandler(async (req, res, nxt) => {
   // let token;
@@ -45,13 +47,13 @@ export const checkAuthMiddware = expressAsyncHandler(async (req, res, nxt) => {
     } catch (error) {
       console.error(error);
       res.status(401);
-      throw new Error("token not found");
+      throw new Error("unauthorized token");
     }
   }
 
   if (!token) {
     res.status(401);
-    throw new Error("token not found");
+    throw new Error("unauthorized token");
   }
 });
 
